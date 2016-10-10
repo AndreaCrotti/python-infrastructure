@@ -10,21 +10,19 @@ ENV PYTHONUNBUFFERED 1
 # https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices/#/run
 
 RUN apt-get -qy update && apt-get install -y \
+    # needed for maptlotlib set up as well
+    pkg-config \
     python-dev \
     # libraries needed for databases
     libmysqlclient-dev \
     libpq-dev \
     # various utils
     git \
-     # for matplotlib
-    libfreetype6-dev \
-    libfreetype6 \
-    # super packages needed
-    python-pip
-    # python-matplotlib \
-    # python-pandas \
-    # python-scipy \
-    # python-seaborn
+    python-pip \
+    python-matplotlib \
+    python-pandas \
+    python-scipy \
+    python-seaborn
 
 # alternatively install all the dependencies by hand, use `aptitude show package-name`
 # to see what are all the system level packages needed
@@ -49,6 +47,8 @@ COPY requirements.txt .
 # RUN tar -xvzf app.tar.gz /deploy/app/
 
 COPY requirements_test.txt .
+#TODO: some backward incompatible changes in pip 8.2.1
+RUN pip install -U pip
 RUN pip install -r requirements.txt
 
 COPY docker_test.sh /

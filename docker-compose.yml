@@ -26,11 +26,6 @@ services:
   mongodb:
     image: mongo:3.2
 
-  # mongodb:
-  #   build:
-  #     context: .
-  #     dockerfile: Dockerfile.mongodb
-
   test_db:
     # keep in mind that you can't change super easily from one version to
     # the other if there are volumes involved
@@ -49,18 +44,6 @@ services:
 
     volumes:
       - data:/var/lib/postgresql/data
-
-    # image: postgres:9.6
-    # TODO: Add container as well
-    # volumes_from:
-    #   - container:dbstore
-    # volumes:
-    #   - pgvolume: /var/lib/postgresql/data
-
-    # environment:
-    #   - POSTGRES_USER="test_django"
-    #   - POSTGRES_PASSWORD="test_django"
-    #   - POSTGRES_DB="test_django"
 
   # TODO: Add other types of databases
   # db:
