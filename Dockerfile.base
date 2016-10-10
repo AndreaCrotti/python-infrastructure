@@ -18,6 +18,8 @@ RUN apt-get -qy update && apt-get install -y \
     git \
      # for matplotlib
     libfreetype6-dev \
+    libfreetype6 \
+    # super packages needed
     python-pip \
     python-matplotlib \
     python-pandas \

@@ -5,7 +5,8 @@ services:
   test:
     build:
       context: .
-      dockerfile: Dockerfile.test
+      # should actually be Dockerfile.test
+      dockerfile: Dockerfile.base
     depends_on:
       - test_db
     links:
@@ -15,16 +16,32 @@ services:
       context: .
       dockerfile: Dockerfile.production
 
-    depends_on:
-      - db
+    # depends_on:
+    #   - db
       # - cache
     ports:
       - "8000:8000"
 
-  test_db:
+  mongodb:
     build:
       context: .
-      dockerfile: Dockerfile.postgres
+      dockerfile: Dockerfile.mongodb
+
+  test_db:
+    image: postgres:9.6
+    # build: postgres:9.6
+    # build:
+    #   context: .
+    #   dockerfile: Dockerfile.postgres
+
+    ports:
+      - "5432:5432"
+
+    environment:
+      - POSTGRES_USER=test_django
+      - POSTGRES_PASSWORD=test_django
+      - POSTGRES_DB=test_django
+      
 
     # image: postgres:9.6
     # TODO: Add container as well
@@ -38,8 +55,9 @@ services:
     #   - POSTGRES_PASSWORD="test_django"
     #   - POSTGRES_DB="test_django"
 
-  db:
-    image: postgres
+  # TODO: Add other types of databases
+  # db:
+  #   image: postgres
   # cache:
   #   image: redis
 

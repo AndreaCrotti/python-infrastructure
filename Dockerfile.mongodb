@@ -1,0 +1,6 @@
+FROM mongo:3.2
+
+MAINTAINER Andrea <andrea.crotti.0@gmail.com>
+
+#TODO: add some test database and users to set up all the other things
+#that are needed

@@ -1,9 +1,7 @@
 FROM postgres:9.6
 
-MAINTAINER iwoca tech <tech@iwoca.co.uk>
-
-ENV DEBIAN_FRONTEND noninteractive
+MAINTAINER Andrea Crotti <andrea.crotti.0@gmail.com>
 
 COPY init-userdb.sh /
 
-CMD ["/init-userdb.sh"]
+# CMD ["/init-userdb.sh"]
