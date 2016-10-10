@@ -1,7 +1,7 @@
 FROM ubuntu:16.04
 MAINTAINER Andrea <andrea.crotti.0@gmail.com>
 
-ENV DATABASE_URL "postgres://test_django:test_django@test_db/test_django"
+ENV PYTHONUNBUFFERED 1
 #TODO: the database to use could be set here
 
 
@@ -20,11 +20,11 @@ RUN apt-get -qy update && apt-get install -y \
     libfreetype6-dev \
     libfreetype6 \
     # super packages needed
-    python-pip \
-    python-matplotlib \
-    python-pandas \
-    python-scipy \
-    python-seaborn
+    python-pip
+    # python-matplotlib \
+    # python-pandas \
+    # python-scipy \
+    # python-seaborn
 
 # alternatively install all the dependencies by hand, use `aptitude show package-name`
 # to see what are all the system level packages needed
@@ -32,8 +32,9 @@ RUN apt-get -qy update && apt-get install -y \
 RUN mkdir -p /deploy/app
 
 #TODO: could use volumes or git archive instead here
-COPY django_proj /deploy/app/
-COPY requirements.txt /deploy/app/
+WORKDIR /deploy/app
+COPY django_proj .
+COPY requirements.txt .
 
 # this means we could test different branches just by packing a different version??
 # might be an issue for dependencies though.
@@ -44,7 +45,9 @@ COPY requirements.txt /deploy/app/
 
 #TODO: add a requirement from another package
 RUN pip install -U pip
-RUN pip install -r /deploy/app/requirements.txt
+RUN pip install -r requirements.txt
 
 COPY docker_test.sh /
+
+ENV DATABASE_URL "postgres://test_django:test_django@test_db:5432/test_django"
 CMD ["/docker_test.sh"]

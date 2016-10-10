@@ -9,8 +9,8 @@ services:
       dockerfile: Dockerfile.base
     depends_on:
       - test_db
-    links:
-      - test_db
+    # volumes:
+    #   - django_proj:/deploy/app
   web:
     build:
       context: .
@@ -29,13 +29,12 @@ services:
 
   test_db:
     image: postgres:9.6
+    # TODO: could use a custom extended package if it makes sense
+    # to do so
     # build: postgres:9.6
     # build:
     #   context: .
     #   dockerfile: Dockerfile.postgres
-
-    ports:
-      - "5432:5432"
 
     environment:
       - POSTGRES_USER=test_django
