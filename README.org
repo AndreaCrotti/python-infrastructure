@@ -18,6 +18,7 @@
 - https://forums.docker.com/t/best-practices-for-getting-code-into-a-container-git-clone-vs-copy-vs-data-container/4077/4
 - https://pypi.python.org/pypi/pypiserver (to set up a local pypi server)
 - https://docs.docker.com/compose/compose-file/#/build
+- https://pypi.python.org/pypi/twine
 
 * Technologies
 
