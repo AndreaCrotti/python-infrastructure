@@ -24,7 +24,7 @@ services:
     #   - pgvolume: /var/lib/postgresql/data
 
     environment:
-      - POSTGRES_DB="test_django"
+      - POSTGRES_USER="test_django"
       - POSTGRES_PASSWORD="test_django"
       - POSTGRES_DB="test_django"
 
