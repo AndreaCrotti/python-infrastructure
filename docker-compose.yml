@@ -1,6 +1,10 @@
 version: '2'
 
 services:
+  pypiserver:
+    build:
+      context: .
+      dockerfile: Dockerfile.pypiserver
 
   test:
     build:
