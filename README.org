@@ -14,6 +14,7 @@
 - http://www.slideshare.net/ServNet/cloudformation-vs-terraform-vs-ansible
 - https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices/
 - https://docs.docker.com/registry/deploying/
+- https://insights.ubuntu.com/2016/02/10/docker-alpine-ubuntu-and-you/
 
 * Technologies
 
