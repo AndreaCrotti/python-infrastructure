@@ -40,7 +40,9 @@ services:
       - POSTGRES_USER=test_django
       - POSTGRES_PASSWORD=test_django
       - POSTGRES_DB=test_django
-      
+
+    volumes:
+      - data:/var/lib/postgresql/data
 
     # image: postgres:9.6
     # TODO: Add container as well
@@ -60,5 +62,7 @@ services:
   # cache:
   #   image: redis
 
-# volumes:
-#   pgvolume: #declare a volume named pgvolume
+
+volumes:
+  data:
+    # external: true

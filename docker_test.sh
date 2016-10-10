@@ -1,3 +1,10 @@
 #!/usr/bin/env bash
 
-cd /deploy/app && ./manage.py test
+set -ex
+
+if [[ "$1" -eq "1" ]]
+then ARGS="-k"
+else ARGS=""
+fi
+
+cd /deploy/app && ./manage.py test $ARGS

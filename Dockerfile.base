@@ -49,5 +49,10 @@ RUN pip install -r requirements.txt
 
 COPY docker_test.sh /
 
+#TODO: the database url could be constructed from the other env variables
+# ENV DATABASE_URL "postgres://$POSTGRES_USER:$POSTGRES_PASSWORD@test_db/$POSTGRES_DB"
 ENV DATABASE_URL "postgres://test_django:test_django@test_db:5432/test_django"
-CMD ["/docker_test.sh"]
+ENV KEEP_DB 1
+
+#TODO: the 1 should come from KEEP_DB instead
+CMD ["/docker_test.sh", "1"]
