@@ -10,6 +10,7 @@ ENV PYTHONUNBUFFERED 1
 # https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices/#/run
 
 RUN apt-get -qy update && apt-get install -y \
+    git \
     # needed for maptlotlib set up as well
     pkg-config \
     python-dev \
