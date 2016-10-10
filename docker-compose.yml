@@ -6,7 +6,8 @@ services:
     build: .
     depends_on:
       - test_db
-
+    links:
+      - test_db
   web:
     build: .
     depends_on:
@@ -15,18 +16,22 @@ services:
     ports:
       - "8000:8000"
 
+
   test_db:
-    image: postgres:9.6
+    build:
+      context: .
+      dockerfile: Dockerfile.postgres
+    # image: postgres:9.6
     # TODO: Add container as well
     # volumes_from:
     #   - container:dbstore
     # volumes:
     #   - pgvolume: /var/lib/postgresql/data
 
-    environment:
-      - POSTGRES_USER="test_django"
-      - POSTGRES_PASSWORD="test_django"
-      - POSTGRES_DB="test_django"
+    # environment:
+    #   - POSTGRES_USER="test_django"
+    #   - POSTGRES_PASSWORD="test_django"
+    #   - POSTGRES_DB="test_django"
 
   db:
     image: postgres

@@ -5,24 +5,25 @@ ENV DATABASE_URL "postgres://test_django:test_django@test_db/test_django"
 #TODO: the database to use could be set here
 
 
-
-#TODO: try to set a few environment variables?
-
 # running update in the same instruction as suggested here
 # to avoid possible caching issues
 # https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices/#/run
+
 RUN apt-get -qy update && apt-get install -y \
-    # for Pandas and similar libraries
-    libblas-dev \
-    liblapack-dev \
     python-dev \
-    # database settings
+    # libraries needed for databases
     libmysqlclient-dev \
     libpq-dev \
     # various utils
     git \
-    python-pip
-    # g++ libfreetype6-dev python-matplotlib libxml2-dev libxslt-dev gfortran libssl-dev libpng-dev libffi-dev libcairo2-dev libblas-dev liblapack-dev graphviz libpq-dev postgresql-client
+    python-pip \
+    python-matplotlib \
+    python-pandas \
+    python-scipy \
+    python-seaborn
+
+# alternatively install all the dependencies by hand, use `aptitude show package-name`
+# to see what are all the system level packages needed
 
 RUN mkdir -p /deploy/app
 
@@ -38,6 +39,7 @@ COPY requirements.txt /deploy/app/
 # RUN tar -xvzf app.tar.gz /deploy/app/
 
 #TODO: add a requirement from another package
+RUN pip install -U pip
 RUN pip install -r /deploy/app/requirements.txt
 
 COPY docker_test.sh /

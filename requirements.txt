@@ -6,3 +6,11 @@ pytest==3.0.3
 pytest-django==3.0.0
 psycopg2==2.6.2
 dj-database-url==0.4.1
+
+mysql-python==1.2.5
+# to make it 
+numpy==1.11.1
+matplotlib==1.4.3
+pandas==0.18.1
+scipy==0.14.0
+seaborn==0.7.0
