@@ -9,6 +9,7 @@ services:
       dockerfile: Dockerfile.base
     depends_on:
       - test_db
+      - mongodb
     # volumes:
     #   - django_proj:/deploy/app
   web:
@@ -23,12 +24,17 @@ services:
       - "8000:8000"
 
   mongodb:
-    build:
-      context: .
-      dockerfile: Dockerfile.mongodb
+    image: mongo:3.2
+
+  # mongodb:
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile.mongodb
 
   test_db:
-    image: postgres:9.6
+    # keep in mind that you can't change super easily from one version to
+    # the other if there are volumes involved
+    image: postgres:9.5
     # TODO: could use a custom extended package if it makes sense
     # to do so
     # build: postgres:9.6

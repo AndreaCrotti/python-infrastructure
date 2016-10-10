@@ -29,11 +29,16 @@ RUN apt-get -qy update && apt-get install -y \
 # alternatively install all the dependencies by hand, use `aptitude show package-name`
 # to see what are all the system level packages needed
 
+
 RUN mkdir -p /deploy/app
 
 #TODO: could use volumes or git archive instead here
 WORKDIR /deploy/app
 COPY django_proj .
+#TODO: should this be installed in another way?
+#complains about the place where pip is installed
+# RUN pip install -U pip
+
 COPY requirements.txt .
 
 # this means we could test different branches just by packing a different version??
@@ -43,8 +48,7 @@ COPY requirements.txt .
 
 # RUN tar -xvzf app.tar.gz /deploy/app/
 
-#TODO: add a requirement from another package
-RUN pip install -U pip
+COPY requirements_test.txt .
 RUN pip install -r requirements.txt
 
 COPY docker_test.sh /
@@ -55,4 +59,4 @@ ENV DATABASE_URL "postgres://test_django:test_django@test_db:5432/test_django"
 ENV KEEP_DB 1
 
 #TODO: the 1 should come from KEEP_DB instead
-CMD ["/docker_test.sh", "1"]
+CMD ["/docker_test.sh"]

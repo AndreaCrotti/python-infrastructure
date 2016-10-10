@@ -2,7 +2,7 @@
 
 set -ex
 
-if [[ "$1" -eq "1" ]]
+if [[ "$KEEP_DB" -eq "1" ]]
 then ARGS="-k"
 else ARGS=""
 fi

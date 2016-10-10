@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-docker-compose build test  && docker-compose up test
+docker-compose --verbose build test  && docker-compose --verbose up test
