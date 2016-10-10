@@ -1,0 +1,37 @@
+version: '2'
+
+services:
+
+  test:
+    build: .
+    depends_on:
+      - test_db
+
+  web:
+    build: .
+    depends_on:
+      - db
+      # - cache
+    ports:
+      - "8000:8000"
+
+  test_db:
+    image: postgres:9.6
+    # TODO: Add container as well
+    # volumes_from:
+    #   - container:dbstore
+    # volumes:
+    #   - pgvolume: /var/lib/postgresql/data
+
+    environment:
+      - POSTGRES_DB="test_django"
+      - POSTGRES_PASSWORD="test_django"
+      - POSTGRES_DB="test_django"
+
+  db:
+    image: postgres
+  # cache:
+  #   image: redis
+
+# volumes:
+#   pgvolume: #declare a volume named pgvolume
