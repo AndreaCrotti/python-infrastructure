@@ -17,12 +17,13 @@ RUN apt-get -qy update && apt-get install -y \
     libmysqlclient-dev \
     libpq-dev \
     # various utils
-    git \
     python-pip \
     python-matplotlib \
     python-pandas \
     python-scipy \
-    python-seaborn
+    python-seaborn \
+    python3-cairocffi \
+    libffi-dev
 
 # alternatively install all the dependencies by hand, use `aptitude show package-name`
 # to see what are all the system level packages needed
