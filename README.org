@@ -1,0 +1,28 @@
+* Configuration for full dockerization
+
+** TODO terraform?
+
+** TODO Ansible and docker containers
+
+** TODO ansible to set up the infrastructure
+
+* Useful resources
+
+- https://semaphoreci.com/community/tutorials/continuous-deployment-with-docker-aws-and-ansible
+- http://txt.fliglio.com/2015/07/12-factor-infrastructure-with-consul-and-vault/
+- https://www.terraform.io/intro/examples/aws.html
+- http://www.slideshare.net/ServNet/cloudformation-vs-terraform-vs-ansible
+- https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices/
+- https://docs.docker.com/registry/deploying/
+
+* Technologies
+
+- consul
+- vault
+- docker
+- terraform? (instead of every time you would use the AWS ui)
+
+* Testing everything
+
+- terraform kitchen: https://github.com/newcontext/kitchen-terraform
+- 
