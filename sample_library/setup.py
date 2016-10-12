@@ -9,6 +9,7 @@ setup(name=package,
       packages=['library'],
       description="Sample library",
       author="Andrea Crotti",
+      install_requires=['requests>=2.10'],
       author_email="andrea.crotti.0@gmail.com",
       license='MIT',
       classifiers=[
