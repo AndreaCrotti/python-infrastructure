@@ -19,6 +19,9 @@
 - https://pypi.python.org/pypi/pypiserver (to set up a local pypi server)
 - https://docs.docker.com/compose/compose-file/#/build
 - https://pypi.python.org/pypi/twine
+- http://tox.readthedocs.io/en/latest/example/jenkins.html
+  however it might be better to just have different containers per version
+  so that we can generate them simply by country and other environment variables.
 
 * Technologies
 
