@@ -34,3 +34,12 @@
 
 - terraform kitchen: https://github.com/newcontext/kitchen-terraform
 - 
+
+* Vagrant local set up
+
+vagrant init bento/ubuntu-16.04; vagrant up --provider virtualbox
+
+* Questions
+
+- [ ] should we add the other index as extra or make sure all
+  the packages we need are also on this new index?
