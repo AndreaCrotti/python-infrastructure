@@ -16,16 +16,16 @@ RUN apt-get -qy update && apt-get install -y \
     python-dev \
     # libraries needed for databases
     libmysqlclient-dev \
-    libpq-dev \
+    libpq-dev
     # various utils
-    python-pip \
-    python-matplotlib \
-    python-pandas \
-    python-scipy \
-    python-seaborn \
-    #TODO: probably this one not needed at all
-    python3-cairocffi \
-    libffi-dev
+    # python-pip \
+    # python-matplotlib \
+    # python-pandas \
+    # python-scipy \
+    # python-seaborn \
+    # #TODO: probably this one not needed at all
+    # python3-cairocffi \
+    # libffi-dev
 
 # alternatively install all the dependencies by hand, use `aptitude show package-name`
 # to see what are all the system level packages needed
