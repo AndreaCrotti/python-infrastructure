@@ -2,6 +2,7 @@ FROM ubuntu:16.04
 MAINTAINER Andrea <andrea.crotti.0@gmail.com>
 
 ENV PYTHONUNBUFFERED 1
+ENV DEBIAN_FRONTEND noninteractive
 #TODO: the database to use could be set here
 
 
@@ -9,7 +10,7 @@ ENV PYTHONUNBUFFERED 1
 # to avoid possible caching issues
 # https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices/#/run
 
-RUN apt-get -qy update && apt-get install -y \
+RUN apt-get update && apt-get install \
     git \
     # needed for maptlotlib set up as well
     pkg-config \
