@@ -16,9 +16,9 @@ RUN apt-get -qy update && apt-get install -y \
     python-dev \
     # libraries needed for databases
     libmysqlclient-dev \
-    libpq-dev
+    libpq-dev \
     # various utils
-    # python-pip \
+    python-pip
     # python-matplotlib \
     # python-pandas \
     # python-scipy \
