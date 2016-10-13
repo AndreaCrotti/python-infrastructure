@@ -11,11 +11,14 @@ services:
       context: .
       # should actually be Dockerfile.test
       dockerfile: Dockerfile.base
+
     depends_on:
       - test_db
       - mongodb
-    # volumes:
-    #   - django_proj:/deploy/app
+
+    volumes:
+      - ./reports:/deploy/app/reports
+
   web:
     build:
       context: .
@@ -43,3 +46,4 @@ services:
 
 volumes:
   data:
+  reports:
