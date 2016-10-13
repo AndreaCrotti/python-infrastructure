@@ -3,8 +3,8 @@
 set -ex
 
 if [[ "$KEEP_DB" -eq "1" ]]
-then ARGS="-k"
+then ARGS="--reuse-db"
 else ARGS=""
 fi
 
-cd /deploy/app && ./manage.py test $ARGS
+cd /deploy/app && py.test api/tests.py $ARGS --junit-xml=reports/tests.xml

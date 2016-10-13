@@ -35,6 +35,7 @@ RUN mkdir -p /deploy/app
 
 #TODO: could use volumes or git archive instead here
 WORKDIR /deploy/app
+RUN mkdir reports/
 COPY django_proj .
 #TODO: should this be installed in another way?
 #complains about the place where pip is installed
@@ -53,6 +54,7 @@ COPY requirements_test.txt .
 #TODO: some backward incompatible changes in pip 8.2.1
 RUN pip install -U pip
 RUN pip install -r requirements.txt
+RUN pip install -r requirements_test.txt
 
 COPY docker_test.sh /
 

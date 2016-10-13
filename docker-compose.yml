@@ -21,9 +21,6 @@ services:
       context: .
       dockerfile: Dockerfile.production
 
-    # depends_on:
-    #   - db
-      # - cache
     ports:
       - "8000:8000"
 
@@ -35,11 +32,6 @@ services:
     # the other if there are volumes involved
     image: postgres:9.5
     # TODO: could use a custom extended package if it makes sense
-    # to do so
-    # build: postgres:9.6
-    # build:
-    #   context: .
-    #   dockerfile: Dockerfile.postgres
 
     environment:
       - POSTGRES_USER=test_django
@@ -49,13 +41,5 @@ services:
     volumes:
       - data:/var/lib/postgresql/data
 
-  # TODO: Add other types of databases
-  # db:
-  #   image: postgres
-  # cache:
-  #   image: redis
-
-
 volumes:
   data:
-    # external: true
