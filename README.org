@@ -23,6 +23,10 @@
   however it might be better to just have different containers per version
   so that we can generate them simply by country and other environment variables.
 - https://hynek.me/articles/sharing-your-labor-of-love-pypi-quick-and-dirty/
+- https://github.com/ICTO/ansible-jenkins
+- http://juristr.com/blog/2014/01/git-flow-jenkins-gitlab/
+- https://aboutsimon.com/blog/2012/02/24/Create-a-local-PyPI-mirror.html
+- https://hub.docker.com/r/sjourdan/vault/
 
 * Technologies
 
@@ -40,7 +44,31 @@
 
 vagrant init bento/ubuntu-16.04; vagrant up --provider virtualbox
 
+* Service discovery and co
+
+Example of how to use registrator (sharing docker.sock) to make it
+auto discover stuff from docker stats.
+
+#+BEGIN_SRC sh
+  docker run -d --name registrator \
+         -v /var/run/docker.sock:/tmp/docker.sock \
+         -h serv-disc-01 \
+         gliderlabs/registrator \
+         -p 10.100.194.201 etcd://10.100.194.201:2379
+#+END_SRC
+
 * Questions
 
 - [ ] should we add the other index as extra or make sure all
   the packages we need are also on this new index?
+
+* TODO add consul and registrator configuration
+
+* TODO add vault configuration (storing in consul)
+
+* Various useful information
+
+** Consul template
+
+CPU goes crazy sometimes, and since consul keeps one open connection
+per key, it might kill the consul cluster.
