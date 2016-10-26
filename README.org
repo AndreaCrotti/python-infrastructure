@@ -27,6 +27,7 @@
 - http://juristr.com/blog/2014/01/git-flow-jenkins-gitlab/
 - https://aboutsimon.com/blog/2012/02/24/Create-a-local-PyPI-mirror.html
 - https://hub.docker.com/r/sjourdan/vault/
+- https://www.amon.cx/blog/building-your-infrastructure-with-terraform/
 
 * Technologies
 
